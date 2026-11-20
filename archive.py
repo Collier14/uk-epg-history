@@ -83,6 +83,5 @@ def main():
     print(f"Saved {len(programmes)} programmes")
 
 
-if __name__ =
-= "__main__":
+if __name__ == "__main__":
     main()
