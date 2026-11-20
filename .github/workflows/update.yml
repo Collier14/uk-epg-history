@@ -23,7 +23,12 @@ jobs:
           python-version: '3.x'
 
       - name: Download and merge EPG
-        run: python archive.py
+        run: |
+          python archive.py || {
+            echo "First attempt failed. Waiting 1 hour before retry..."
+            sleep 3600
+            python archive.py
+          }
 
       - name: Compress EPG
         run: gzip -c epg.xml > epg.xml.gz
